@@ -137,7 +137,7 @@ button[disabled] { opacity: 0.6; cursor: progress; }
     <p class="lead">Jetzt hast du alle 24 Buchstaben. Bring sie in die richtige Reihenfolge und gib den Satz hier ein.</p>
     <div class="boxes" id="boxes" aria-hidden="true"></div>
     <form id="form" novalidate>
-      <label for="answer">Dein Lösungssatz</label>
+      <label for="answer">Deine Lösung</label>
       <input id="answer" name="answer" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false">
       <button id="submit" type="submit">Türchen öffnen</button>
       <p class="status" id="status" role="status" aria-live="polite"></p>
@@ -294,7 +294,7 @@ $("form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const letters = norm(input.value);
   if (!PAYLOAD) return say("Diese Seite ist noch nicht fertig eingerichtet.", true);
-  if (!letters.length) return say("Gib zuerst den Satz ein.", true);
+  if (!letters.length) return say("Naaa, so kannst du mich nicht austricksen, gib zuerst den Satz ein.", true);
   const diff = TOTAL - letters.length;
   if (diff === 1) return say("Da fehlt noch 1 Buchstabe.", true);
   if (diff > 1) return say("Da fehlen noch " + diff + " Buchstaben.", true);
@@ -307,7 +307,7 @@ $("form").addEventListener("submit", async (e) => {
     show(JSON.parse(await decrypt(letters)));
   } catch (err) {
     if (err && err.wrong) {
-      say("Alle 24 Buchstaben sind da, aber der Satz stimmt noch nicht. Schau dir die Reihenfolge nochmal an.", true);
+      say("Alle 24 Buchstaben sind da, aber der Satz stimmt noch nicht. Kleiner Tipp: W B G A K.", true);
     } else {
       say("Das hat gerade nicht geklappt. Prüf deine Internetverbindung und versuch es nochmal.", true);
     }
